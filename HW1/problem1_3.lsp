@@ -1,0 +1,20 @@
+(DEFUN fib1 (n)
+	(if (< n 2)
+		n
+		(+ (fib1 (- n 1)) (fib1 (- n 2)))
+ 	)
+)
+
+(DEFUN tailFib (n a b)
+	(if (= n 0)
+		(return-from tailFib a)
+	)
+	(if (= n 1)
+		(return-from tailFib b)
+	)
+	(tailFib (- n 1) b (+ a b))
+)
+(DEFUN fib2 (n)
+	(tailfib n 0 1)
+)
+
