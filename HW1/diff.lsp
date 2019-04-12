@@ -8,10 +8,8 @@
 			(setq file_content (reverse file_content))
 			(close fin)
 			(return-from read_file file_content)
-		)
-	
+		)	
 	)
-
 )
 
 (DEFUN find_lcs (l1 l2)
@@ -32,9 +30,6 @@
 						 		(setf (aref table (+ i 1) (+ j 1) 1) 'u)
 							)
 						)
-
-
-
 					)
 				)
 			)
@@ -91,7 +86,7 @@
 			(when (equal pos (aref LCS row col))
 				(cond 	( (= row 1)	(return) )
 					( (= row 2)	(progn
-								(print (nth pos _list))
+								(format t " ~a~&" (nth pos _list))
 								(return)
 							)
 					)
@@ -100,11 +95,10 @@
 
 		)
 		
-		(cond	( (= row 1) (princ "-") )
-			( (= row 2) (princ "+") )
+		(cond	( (= row 1) (format t "~a" "-") )
+			( (= row 2) (format t "~a" "+") )
 		)
-		(princ (nth pos _list))
-		(fresh-line)
+		(format t "~a~&" (nth pos _list))
 		(setq pos (+ pos 1))
 	)
 	(return-from look_list pos)
@@ -121,9 +115,10 @@
 		)
 	)	
 )
-(defvar l1 '(A B C A B C B A))
-(defvar l2 '(C B A B C A B C C))
-(printDiff (find_lcs l1 l2) l1 l2)
+
+;(defvar l1 '(A B C A B C B A))
+;(defvar l2 '(C B A B C A B C C))
+;(printDiff (find_lcs l1 l2) l1 l2)
 
 (defvar file1 (read_file "file1.txt"))
 (defvar file2 (read_file "file2.txt"))
