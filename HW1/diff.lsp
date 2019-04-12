@@ -86,7 +86,7 @@
 			(when (equal pos (aref LCS row col))
 				(cond 	( (= row 1)	(return) )
 					( (= row 2)	(progn
-								(format t " ~a~&" (nth pos _list))
+								(format t "~c[97m ~a~&~c[0m" #\ESC (nth pos _list) #\ESC)
 								(return)
 							)
 					)
@@ -95,10 +95,9 @@
 
 		)
 		
-		(cond	( (= row 1) (format t "~a" "-") )
-			( (= row 2) (format t "~a" "+") )
+		(cond	( (= row 1) (format t "~c[31m-~a~&~c[0m" #\ESC (nth pos _list) #\ESC) )
+			( (= row 2) (format t "~c[32m+~a~&~c[0m" #\ESC (nth pos _list) #\ESC) )
 		)
-		(format t "~a~&" (nth pos _list))
 		(setq pos (+ pos 1))
 	)
 	(return-from look_list pos)
