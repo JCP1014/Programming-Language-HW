@@ -98,9 +98,6 @@
 	)	
 )
 
-;(defvar l1 '(A B C A B C B A))
-;(defvar l2 '(C B A B C A B C C))
-;(printDiff (find_lcs l1 l2) l1 l2)
 
 (defvar file1 (read_file "file1.txt"))
 (defvar file2 (read_file "file2.txt"))
