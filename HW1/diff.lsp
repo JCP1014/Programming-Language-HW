@@ -33,11 +33,6 @@
 					)
 				)
 			)
-			#|(loop for x from 0 to m do
-				(loop for y from 0 to n do
-					(print (aref table x y 1))
-				)
-			)|#
 
 			
 			;; Get LCS from the table
@@ -58,21 +53,9 @@
 					(when (equal (aref table i j 1) 0) (return))
 				)
 				
-				#|(loop for x from 0 to 2 do
-					(loop for y from 0 to (- (array-dimension LCS 1) 1) do
-						(print (aref LCS x y))
-					)
-				)|#
 				(return-from find_lcs LCS)
 				
 			)
-			#|		
-			(loop for x from 0 to 3 do
-				(loop for y from 0 to (- (length LCS) 1) do
-					(print (aref table x y 1))
-				)
-			)
-			|#
 		
 		)
 	)

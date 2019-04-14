@@ -18,3 +18,9 @@
 	(tailfib n 0 1)
 )
 
+
+(trace fib1)
+(fib1 3)
+(format t "--------------------------------~%")
+(trace fib2)
+(fib2 8)

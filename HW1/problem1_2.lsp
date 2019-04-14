@@ -4,3 +4,9 @@
 		(return-from palindrome nil)
 	)
 )
+
+(format t "~a~&" (palindrome '(a b c)))
+(format t "~a~&" (palindrome '(m a d a m)))
+(format t "~a~&" (palindrome '(cat dog)))
+(format t "~a~&" (palindrome '()))
+(format t "~a~&" (palindrome '(cat dog bird bird dog cat)))

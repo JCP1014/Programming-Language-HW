@@ -12,3 +12,8 @@
   		)
  	)
 )
+
+(format t "~a~&" (prime 2))
+(format t "~a~&" (prime 239))
+(format t "~a~&" (prime 999))
+(format t "~a~&" (prime 17))
