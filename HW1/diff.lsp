@@ -76,7 +76,7 @@
 			(when (equal pos (aref LCS row col))
 				(cond 	( (= row 1)	(return) )	; If reach index of LCS in l1, return
 					( (= row 2)	(progn		; If reach index of LCS in l2, print the common element and then return
-								(format t "~c[97m ~a~&~c[0m" #\ESC (nth pos _list) #\ESC)
+								(format t "~c[97m ~a~&~c[0m" #\ESC (nth pos _list) #\ESC)	; [97m for white
 								(return)
 							)
 					)
