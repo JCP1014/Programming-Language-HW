@@ -6,7 +6,8 @@ import numpy as np
 from operator import methodcaller
 import math
 
-name_cut = input("Input Author: ").split()
+input_name = input("Input Author: ")
+name_cut = input_name.split()
 author = name_cut[0]
 for i in range(1, len(name_cut)):
 	author += "+"+name_cut[i]
@@ -31,26 +32,26 @@ if(len(result)>0):
 		html_str = content.read().decode('utf-8')
 		pattern = "Authors:[\s\S]*?</p>"
 		result = re.findall(pattern, html_str)
-
+		check = False
+		temp_list = []
 		pattern = "a href=\"[\s\S]*?\">[\s\S]*?</a>"
 		for r in result:
 			name_result = re.findall(pattern,r)
 			for n in name_result:
 				name = n.split("\">")[1].split("</a>")[0].strip()
-				co_author.append(name)
+				temp_list.append(name)
+				if(name==input_name):
+					check = True
+			if(check==True):
+				for t in temp_list:
+					co_author.append(t)
+			check = False
+			temp_list = []
 		start += 50
 
-	pattern = "[\s\S]*"
-	for n in name_cut:
-		pattern += n
-		pattern += "[\s\S]*"
-
-	for i in range(len(co_author)):
-		if re.match(pattern,co_author[i],re.I):
-			co_author[i] = None
-	while None in co_author: co_author.remove(None)
+	while input_name in co_author: co_author.remove(input_name)
 	co_list = sorted(co_author,key=methodcaller('casefold'))
-
+	
 	if(len(co_author)>0):
 		co_name, times = zip(*Counter(co_list).items())
 		for i in range(len(co_name)):
