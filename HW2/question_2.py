@@ -40,7 +40,7 @@ if(len(result)>0):
 			for n in name_result:
 				name = n.split("\">")[1].split("</a>")[0].strip()
 				temp_list.append(name)
-				if(name==input_name):
+				if(name.lower()==input_name.lower()):
 					check = True
 			if(check==True):
 				for t in temp_list:
@@ -48,8 +48,8 @@ if(len(result)>0):
 			check = False
 			temp_list = []
 		start += 50
-
-	while input_name in co_author: co_author.remove(input_name)
+	
+	co_author = [x for x in co_author if x.lower()!=input_name.lower()]
 	co_list = sorted(co_author,key=methodcaller('casefold'))
 	
 	if(len(co_author)>0):

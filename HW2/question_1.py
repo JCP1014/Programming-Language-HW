@@ -37,7 +37,7 @@ if(len(result)>0):
 			name_result = re.findall(pattern,r)
 			for n in name_result:
 				name = n.split("\">")[1].split("</a>")[0].strip()
-				if(name==input_name):
+				if(name.lower()==input_name.lower()):
 					check = True
 			if(check==True):
 				pattern = "originally announced[\s\S]*?</p>"
