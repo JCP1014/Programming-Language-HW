@@ -68,4 +68,3 @@ if(len(result)>0):	# Ensure there are some results in the website
 
 else:	# There is no result of searching the input author's name
 	print("Sorry, your query for author produced no results.")
-

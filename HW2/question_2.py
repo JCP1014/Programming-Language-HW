@@ -50,7 +50,8 @@ if(len(result)>0):	# Ensure there are some search results in the website
 				temp_list.append(name)	# Append into the temporary list of co-authors
 				if(name.lower()==input_name.lower()):
 					check = True	# Check whether the input author's name is really in the result
-			# If the input author is actually one of the authors of the paper, then append all authors in temporary list into the list of co-authors; if not, abort those names
+			# If the input author is actually one of the authors of the paper, then append all authors in temporary list into the list of co-authors;
+			# if not, abort those names
 			if(check==True):
 				for t in temp_list:
 					co_author.append(t)
