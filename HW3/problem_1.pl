@@ -1,4 +1,4 @@
-goldbach(4,[2,2]).	% Define the fact that 4 is composed of 2 and 2
+goldbach(4,[2,2]).	% Define the fact that 4 is composed of 2 + 2
 goldbach(N,T) :-	% N is the number tested, T is the tuple compose N
 	N mod 2 =:= 0,	% Even number AND
 	N > 4,		% Greater than 4
@@ -39,12 +39,14 @@ next_prime(P,Next) :-
 print_result(Input) :-
 	writeln('Output: '),
 	goldbach(Input,[P1,P2]),
-	write(P1), write(' '), write(P2), nl, fail.
-print_result(_) :- halt.
+	write(P1), write(' '), write(P2), nl,fail.
+print_result(_).
+
 
 main :- 
 	write('Input: '),
-	readln(Input),
-	print_result(Input).
+	read_string(user_input,"\n","",_,Line),
+	number_string(Input,Line),
+	print_result(Input),halt.
 
 :- initialization(main).
