@@ -34,7 +34,7 @@ next_prime(P,Next) :-
 	P2 is P + 2, next_prime(P2,Next).
 
 print_result(Input) :-
-	write('Output: '),nl,
+	writeln('Output: '),
 	goldbach(Input,[P1 | [P2|_]]),
 	write(P1), write(' '), write(P2), nl, fail.
 print_result(_) :- halt.

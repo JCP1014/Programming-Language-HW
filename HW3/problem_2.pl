@@ -9,7 +9,6 @@ read_relation(N):-
 read_relation(_) :-
 	read(M),
 	read_query(M,[]).
-read_relation(_).
 
 ancestor(A,D) :- parent(A,D).
 ancestor(A,D) :- 
@@ -31,22 +30,21 @@ read_query(M,L):-
 	read_query(M2,L2).
 read_query(_,L) :-
 	length(L,Len),
-	write('Output: '),nl,
+	writeln('Output: '),
 	print_result(L,Len).
 read_query(_,_).
 
 print_result([Head | Tail], M) :-
 	M > 0,!,
-	write(Head),nl,
+	writeln(Head),
 	M2 is M - 1,
 	print_result(Tail,M2).
 prnit_result(_,_).
 
 main :-
-	write('Input: '),nl,
+	writeln('Input: '),
 	read(N),
-	read_relation(N-1),
-	halt.
+	read_relation(N-1),halt.
 
 :- initialization(main).
 
