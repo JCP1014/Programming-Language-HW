@@ -1,13 +1,17 @@
 read_relation(N):-
 	N > 0,!,
-	read(P),
-	read(C),
+	read_string(user_input,"\n","",_,Line),
+	split_string(Line," ","",List),
+	List = [P_str | Tail],
+	Tail =  [C_str | _],
+	number_string(P,P_str),
+	number_string(C,C_str),
 	Fact =.. [parent,P,C],
 	assert(Fact),
 	N2 is N - 1,
 	read_relation(N2).
 read_relation(_) :-
-	read(M),
+	readln(M),
 	read_query(M,[]).
 
 ancestor(A,D) :- parent(A,D).
@@ -22,8 +26,12 @@ lca(A,D1,D2) :-
 
 read_query(M,L):-
 	M > 0,!,
-	read(D1),
-	read(D2),
+	read_string(user_input,"\n","\r",_,Line),
+	split_string(Line," ","",List),
+	List = [D1_str | Tail],
+	Tail =  [D2_str | _],
+	number_string(D1,D1_str),
+	number_string(D2,D2_str),
 	lca(A,D1,D2),
 	append(L,[A],L2),
 	M2 is M - 1,
@@ -43,7 +51,7 @@ prnit_result(_,_).
 
 main :-
 	writeln('Input: '),
-	read(N),
+	readln(N),
 	read_relation(N-1),halt.
 
 :- initialization(main).

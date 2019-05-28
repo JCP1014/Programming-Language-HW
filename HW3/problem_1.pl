@@ -41,7 +41,7 @@ print_result(_) :- halt.
 
 main :- 
 	write('Input: '),
-	read(Input),
+	readln(Input),
 	print_result(Input).
 
 :- initialization(main).
